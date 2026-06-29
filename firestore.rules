@@ -1,0 +1,9 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Standard sandbox rules - allow anyone to read and write to collections
+    match /{document=**} {
+      allow read, write: if true;
+    }
+  }
+}

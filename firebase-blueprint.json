@@ -1,0 +1,122 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile document",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "email": { "type": "string" },
+        "name": { "type": "string" },
+        "role": { "type": "string", "enum": ["attendee", "organizer", "admin"] },
+        "joinedAt": { "type": "string" },
+        "profileImg": { "type": "string" },
+        "bio": { "type": "string" },
+        "company": { "type": "string" }
+      },
+      "required": ["id", "email", "name", "role", "joinedAt", "profileImg"]
+    },
+    "Event": {
+      "title": "Event",
+      "description": "Event detail document",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "category": { "type": "string" },
+        "bannerUrl": { "type": "string" },
+        "location": { "type": "string" },
+        "date": { "type": "string" },
+        "time": { "type": "string" },
+        "capacity": { "type": "integer" },
+        "price": { "type": "number" },
+        "organizerId": { "type": "string" },
+        "organizerName": { "type": "string" },
+        "status": { "type": "string", "enum": ["draft", "published"] },
+        "ticketCategories": { "type": "array" },
+        "gallery": { "type": "array" },
+        "reviews": { "type": "array" },
+        "featured": { "type": "boolean" }
+      },
+      "required": ["id", "title", "description", "category", "bannerUrl", "location", "date", "time", "capacity", "price", "organizerId", "organizerName", "status", "ticketCategories", "gallery", "reviews"]
+    },
+    "Booking": {
+      "title": "Booking",
+      "description": "Ticket booking record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "eventId": { "type": "string" },
+        "eventTitle": { "type": "string" },
+        "eventDate": { "type": "string" },
+        "eventTime": { "type": "string" },
+        "eventLocation": { "type": "string" },
+        "eventBannerUrl": { "type": "string" },
+        "attendeeId": { "type": "string" },
+        "attendeeName": { "type": "string" },
+        "attendeeEmail": { "type": "string" },
+        "ticketCategory": { "type": "string" },
+        "quantity": { "type": "integer" },
+        "totalPrice": { "type": "number" },
+        "status": { "type": "string", "enum": ["booked", "cancelled"] },
+        "qrCodeValue": { "type": "string" },
+        "checkedIn": { "type": "boolean" },
+        "checkedInAt": { "type": "string" },
+        "paymentId": { "type": "string" },
+        "bookedAt": { "type": "string" }
+      },
+      "required": ["id", "eventId", "eventTitle", "eventDate", "eventTime", "eventLocation", "eventBannerUrl", "attendeeId", "attendeeName", "attendeeEmail", "ticketCategory", "quantity", "totalPrice", "status", "qrCodeValue", "checkedIn", "paymentId", "bookedAt"]
+    },
+    "Coupon": {
+      "title": "Coupon",
+      "description": "Coupon details",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "code": { "type": "string" },
+        "discountPercent": { "type": "number" },
+        "active": { "type": "boolean" },
+        "expiresAt": { "type": "string" }
+      },
+      "required": ["id", "code", "discountPercent", "active", "expiresAt"]
+    },
+    "Notification": {
+      "title": "Notification",
+      "description": "Notification document",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "title": { "type": "string" },
+        "message": { "type": "string" },
+        "read": { "type": "boolean" },
+        "createdAt": { "type": "string" },
+        "type": { "type": "string", "enum": ["booking", "payment", "event", "system"] }
+      },
+      "required": ["id", "userId", "title", "message", "read", "createdAt", "type"]
+    }
+  },
+  "firestore": {
+    "users/{userId}": {
+      "schema": "User",
+      "description": "User profile collection"
+    },
+    "events/{eventId}": {
+      "schema": "Event",
+      "description": "Event listings"
+    },
+    "bookings/{bookingId}": {
+      "schema": "Booking",
+      "description": "Bookings collection"
+    },
+    "coupons/{couponId}": {
+      "schema": "Coupon",
+      "description": "Promo coupons"
+    },
+    "notifications/{notificationId}": {
+      "schema": "Notification",
+      "description": "User notifications"
+    }
+  }
+}

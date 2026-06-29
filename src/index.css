@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --color-primary: #6366f1; /* Indigo-500 */
+  --color-secondary: #a855f7; /* Purple-500 */
+  --color-accent: #06b6d4; /* Cyan-500 */
+}
+
+/* Custom overlay scrollbars and focus styles in Dark mode */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.02);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Frosted Glass Core Styles */
+.glass {
+  background: rgba(255, 255, 255, 0.03) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37) !important;
+}
+
+.glass-dark {
+  background: rgba(0, 0, 0, 0.25) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+.mesh-gradient {
+  background-color: #020617 !important;
+  background-image: 
+    radial-gradient(at 0% 0%, #4338ca 0, transparent 50%),
+    radial-gradient(at 50% 0%, #7e22ce 0, transparent 50%),
+    radial-gradient(at 100% 0%, #0e7490 0, transparent 50%) !important;
+  background-attachment: fixed !important;
+}
+
+.header-font {
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Global text contrast correction for the dark frosted theme */
+body {
+  color: #e2e8f0;
+  background-color: #020617;
+}
+
+/* Quick fixes for components expecting white background */
+.glass input, .glass select, .glass textarea {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #f8fafc;
+}
+.glass input::placeholder {
+  color: #94a3b8;
+}
+
+

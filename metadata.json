@@ -1,0 +1,6 @@
+{
+  "name": "EventHub",
+  "description": "Smart Event Management System for finding, booking, and managing events with QR check-ins.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
